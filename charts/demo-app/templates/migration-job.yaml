@@ -15,7 +15,10 @@ spec:
           image: postgres:16-alpine
           env:
             - name: PGPASSWORD
-              value: demo
+              valueFrom:
+                secretKeyRef:
+                  name: demo-postgres-credentials
+                  key: password
           command:
             - sh
             - -c
