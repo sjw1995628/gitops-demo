@@ -20,6 +20,7 @@ spec:
             - sh
             - -c
             - |
+              set -e
               echo "postgres 연결 시도..."
               psql -h demo-postgres -U demo -d demo -c "CREATE TABLE IF NOT EXISTS users (id serial PRIMARY KEY, name text);"
               echo "마이그레이션 완료"
