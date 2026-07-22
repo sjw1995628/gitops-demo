@@ -12,8 +12,14 @@ spec:
       restartPolicy: Never
       containers:
         - name: migration
-          image: busybox:1.36
+          image: postgres:16-alpine
+          env:
+            - name: PGPASSWORD
+              value: demo
           command:
             - sh
             - -c
-            - echo "DB 마이그레이션 실행 중..."; sleep 10; echo "마이그레이션 완료"
+            - |
+              echo "postgres 연결 시도..."
+              psql -h demo-postgres -U demo -d demo -c "CREATE TABLE IF NOT EXISTS users (id serial PRIMARY KEY, name text);"
+              echo "마이그레이션 완료"
