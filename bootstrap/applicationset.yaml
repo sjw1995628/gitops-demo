@@ -16,7 +16,7 @@ spec:
     metadata:
       name: '{{.path.basename}}'
     spec:
-      project: default
+      project: demo-team
       source:
         repoURL: https://github.com/sjw1995628/gitops-demo.git
         targetRevision: main

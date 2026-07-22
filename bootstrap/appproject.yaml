@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: demo-team
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: "demo-app 팀 전용 프로젝트"
+  sourceRepos:
+    - https://github.com/sjw1995628/gitops-demo.git
+  destinations:
+    - server: https://kubernetes.default.svc
+      namespace: demo
+  clusterResourceWhitelist: []
+  namespaceResourceWhitelist:
+    - group: "apps"
+      kind: Deployment
+    - group: "argoproj.io"
+      kind: Rollout
+    - group: ""
+      kind: Service
+    - group: ""
+      kind: ServiceAccount
+    - group: "batch"
+      kind: Job
