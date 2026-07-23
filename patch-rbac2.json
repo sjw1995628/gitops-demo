@@ -1,0 +1,1 @@
+﻿{"data":{"policy.csv":"p, role:demo-team-operator, applications, get, demo-team/*, allow\np, role:demo-team-operator, applications, sync, demo-team/*, allow\ng, viewer, role:demo-team-operator\n"}}
