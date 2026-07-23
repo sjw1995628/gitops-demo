@@ -1,0 +1,24 @@
+apiVersion: argocd-image-updater.argoproj.io/v1alpha1
+kind: ImageUpdater
+metadata:
+  name: demo-team-updater
+  namespace: argocd
+spec:
+  writeBackConfig:
+    method: "git:secret:argocd/git-creds"
+    gitConfig:
+      repository: "https://github.com/<계정>/gitops-demo.git"
+      branch: "main"
+    writeBackTarget: "helmvalues:./values.yaml"
+  applicationRefs:
+    - namePattern: "demo-app*"
+      images:
+        - alias: "nginx"
+          imageName: "nginx"
+          commonUpdateSettings:
+            updateStrategy: "semver"
+            forceUpdate: true
+          manifestTargets:
+            helm:
+              name: "image.repository"
+              tag: "image.tag"
