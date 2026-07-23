@@ -7,7 +7,7 @@ spec:
   writeBackConfig:
     method: "git:secret:argocd/git-creds"
     gitConfig:
-      repository: "https://github.com/<계정>/gitops-demo.git"
+      repository: "https://github.com/sjw1995628/gitops-demo.git"
       branch: "main"
     writeBackTarget: "helmvalues:./values.yaml"
   applicationRefs:
