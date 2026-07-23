@@ -9,9 +9,9 @@ spec:
     gitConfig:
       repository: "https://github.com/sjw1995628/gitops-demo.git"
       branch: "main"
-    writeBackTarget: "helmvalues:./values.yaml"
   applicationRefs:
     - namePattern: "demo-app*"
+      useAnnotations: false
       images:
         - alias: "nginx"
           imageName: "nginx"
